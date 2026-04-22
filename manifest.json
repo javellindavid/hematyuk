@@ -6,11 +6,34 @@
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
+  "display_override": ["window-controls-overlay", "standalone", "minimal-ui"],
+  "dir": "ltr",
   "background_color": "#059669",
   "theme_color": "#059669",
   "orientation": "portrait",
   "lang": "id",
   "prefer_related_applications": false,
+  "related_applications": [],
+  "iarc_rating_id": "",
+  "launch_handler": {
+    "client_mode": "navigate-existing"
+  },
+  "share_target": {
+    "action": "./index.html",
+    "method": "GET",
+    "enctype": "application/x-www-form-urlencoded",
+    "params": {
+      "title": "title",
+      "text": "text",
+      "url": "url"
+    }
+  },
+  "protocol_handlers": [],
+  "file_handlers": [],
+  "scope_extensions": [],
+  "edge_side_panel": {
+    "preferred_width": 400
+  },
   "icons": [
     {
       "src": "icons/icon-192x192-A.png",
@@ -37,6 +60,12 @@
       "sizes": "1442x3090",
       "type": "image/png",
       "form_factor": "narrow"
+    },
+    {
+      "src": "icons/screenshot3.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide"
     }
   ],
   "shortcuts": [
