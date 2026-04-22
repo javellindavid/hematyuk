@@ -7,6 +7,17 @@
   "scope": "./",
   "display": "standalone",
   "display_override": ["tabbed", "window-controls-overlay", "standalone", "minimal-ui", "browser"],
+  "tab_strip": {
+    "home_tab": {
+      "scope_patterns": [
+        { "pathname": "/HematYuk/" },
+        { "pathname": "/HematYuk/index.html" }
+      ]
+    },
+    "new_tab_button": {
+      "url": "./index.html"
+    }
+  },
   "dir": "ltr",
   "background_color": "#059669",
   "theme_color": "#059669",
@@ -63,8 +74,16 @@
       "name": "HematYuk Saldo",
       "description": "Widget ringkasan saldo dan transaksi terkini HematYuk",
       "tag": "hematyuk-balance-widget",
-      "ms_ac_template": "widgets/balance-card.json",
+      "ms_ac_template": "https://javellindavid.github.io/HematYuk/widgets/balance-card.json",
+      "data": "https://javellindavid.github.io/HematYuk/widgets/balance-data.json",
       "type": "application/json",
+      "screenshots": [
+        {
+          "src": "https://javellindavid.github.io/HematYuk/icons/screenshot1.png",
+          "sizes": "1442x3090",
+          "label": "HematYuk balance widget"
+        }
+      ],
       "icons": [
         {
           "src": "icons/icon-192x192-A.png",
