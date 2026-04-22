@@ -61,18 +61,10 @@
   "widgets": [
     {
       "name": "HematYuk Saldo",
-      "description": "Widget ringkasan saldo keuangan HematYuk",
+      "description": "Widget ringkasan saldo dan transaksi terkini HematYuk",
       "tag": "hematyuk-balance-widget",
       "ms_ac_template": "widgets/balance-card.json",
-      "data": "widgets/balance-data.json",
       "type": "application/json",
-      "screenshots": [
-        {
-          "src": "icons/screenshot1.png",
-          "sizes": "1442x3090",
-          "label": "HematYuk balance widget preview"
-        }
-      ],
       "icons": [
         {
           "src": "icons/icon-192x192-A.png",

@@ -7,42 +7,18 @@
       "type": "TextBlock",
       "text": "HematYuk!",
       "weight": "Bolder",
-      "size": "Medium",
       "color": "Good"
     },
     {
       "type": "TextBlock",
-      "text": "Total Saldo",
-      "isSubtle": true,
-      "size": "Small"
-    },
-    {
-      "type": "TextBlock",
-      "text": "${balance}",
+      "text": "Total Saldo: ${balance}",
       "weight": "Bolder",
-      "size": "Large",
-      "color": "Good"
+      "size": "Large"
     },
     {
-      "type": "ColumnSet",
-      "columns": [
-        {
-          "type": "Column",
-          "width": "stretch",
-          "items": [
-            { "type": "TextBlock", "text": "Masuk", "isSubtle": true, "size": "Small" },
-            { "type": "TextBlock", "text": "${income}", "color": "Good", "weight": "Bolder" }
-          ]
-        },
-        {
-          "type": "Column",
-          "width": "stretch",
-          "items": [
-            { "type": "TextBlock", "text": "Keluar", "isSubtle": true, "size": "Small" },
-            { "type": "TextBlock", "text": "${expense}", "color": "Attention", "weight": "Bolder" }
-          ]
-        }
-      ]
+      "type": "TextBlock",
+      "text": "Masuk: ${income} | Keluar: ${expense}",
+      "isSubtle": true
     }
   ],
   "actions": [
