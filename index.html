@@ -2011,7 +2011,7 @@
 
       // Service Worker
       if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('./sw.js')
+        navigator.serviceWorker.register('./service-worker.js')
           .then(() => console.log('SW registered'))
           .catch(e => console.log('SW error', e));
       }
