@@ -69,32 +69,23 @@
   "edge_side_panel": {
     "preferred_width": 400
   },
-  "widgets": [
-    {
-      "name": "HematYuk Saldo",
-      "description": "Widget ringkasan saldo dan transaksi terkini HematYuk",
-      "tag": "hematyuk-balance-widget",
-      "ms_ac_template": "https://javellindavid.github.io/HematYuk/widgets/balance-card.json",
-      "data": "https://javellindavid.github.io/HematYuk/widgets/balance-data.json",
-      "type": "application/json",
-      "screenshots": [
-        {
-          "src": "https://javellindavid.github.io/HematYuk/icons/screenshot1.png",
-          "sizes": "1442x3090",
-          "label": "HematYuk balance widget"
-        }
-      ],
-      "icons": [
-        {
-          "src": "icons/icon-192x192-A.png",
-          "sizes": "192x192",
-          "type": "image/png"
-        }
-      ],
-      "auth": false,
-      "update": 3600
-    }
-  ],
+  "widgets": {
+    "name": "HematYuk Saldo",
+    "description": "Widget ringkasan saldo dan transaksi terkini HematYuk",
+    "tag": "hematyuk-balance-widget",
+    "ms_ac_template": "https://javellindavid.github.io/HematYuk/widgets/balance-card.json",
+    "data": "https://javellindavid.github.io/HematYuk/widgets/balance-data.json",
+    "type": "application/json",
+    "icons": [
+      {
+        "src": "icons/icon-192x192-A.png",
+        "sizes": "192x192",
+        "type": "image/png"
+      }
+    ],
+    "auth": false,
+    "update": 3600
+  },
   "icons": [
     {
       "src": "icons/icon-192x192-A.png",
