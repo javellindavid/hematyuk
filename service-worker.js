@@ -39,6 +39,8 @@ self.addEventListener("activate", event => {
 });
 
 // ── FETCH: cache-first untuk lokal, network-first untuk API ──
+const OFFLINE_URL = 'offline.html';
+
 self.addEventListener("fetch", event => {
   const request = event.request;
   const url = new URL(request.url);
@@ -48,18 +50,26 @@ self.addEventListener("fetch", event => {
 
   if (url.origin === self.location.origin) {
     event.respondWith(
-      caches.match(request).then(response => {
-        return (
-          response ||
-          fetch(request)
-            .then(networkRes => {
-              // Simpan ke cache untuk akses berikutnya
-              const clone = networkRes.clone();
-              caches.open(CACHE_NAME).then(cache => cache.put(request, clone));
-              return networkRes;
-            })
-            .catch(() => caches.match(`${BASE_URL}offline.html`))
-        );
+      caches.match(request).then(cachedResponse => {
+        // Return cached version if available
+        if (cachedResponse) return cachedResponse;
+
+        // Otherwise fetch from network
+        return fetch(request)
+          .then(networkRes => {
+            // Cache the new resource for next time
+            const clone = networkRes.clone();
+            caches.open(CACHE_NAME).then(cache => cache.put(request, clone));
+            return networkRes;
+          })
+          .catch(() => {
+            // Offline fallback: serve cached offline page
+            return caches.match(OFFLINE_URL)
+              || caches.match(`${BASE_URL}${OFFLINE_URL}`)
+              || new Response('<h1>Offline</h1><p>HematYuk sedang offline.</p>', {
+                headers: { 'Content-Type': 'text/html' }
+              });
+          });
       })
     );
   } else {
@@ -70,7 +80,9 @@ self.addEventListener("fetch", event => {
           caches.open(CACHE_NAME).then(cache => cache.put(request, clone));
           return networkResponse;
         })
-        .catch(() => caches.match(request))
+        .catch(() => caches.match(request)
+          || caches.match(`${BASE_URL}${OFFLINE_URL}`)
+        )
     );
   }
 });
