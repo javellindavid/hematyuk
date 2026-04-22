@@ -1,0 +1,10 @@
+{
+  "web_apps": [
+    {
+      "manifest": "https://javellindavid.github.io/HematYuk/manifest.json",
+      "details": {
+        "paths": ["/*"]
+      }
+    }
+  ]
+}
