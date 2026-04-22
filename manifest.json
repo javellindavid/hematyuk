@@ -6,7 +6,7 @@
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
-  "display_override": ["window-controls-overlay", "standalone", "minimal-ui"],
+  "display_override": ["tabbed", "window-controls-overlay", "standalone", "minimal-ui", "browser"],
   "dir": "ltr",
   "background_color": "#059669",
   "theme_color": "#059669",
@@ -28,12 +28,59 @@
       "url": "url"
     }
   },
-  "protocol_handlers": [],
-  "file_handlers": [],
+  "protocol_handlers": [
+    {
+      "protocol": "web+hematyuk",
+      "url": "./index.html?action=%s"
+    }
+  ],
+  "file_handlers": [
+    {
+      "action": "./index.html",
+      "accept": {
+        "application/json": [".json"],
+        "text/plain": [".txt", ".csv"]
+      },
+      "icons": [
+        {
+          "src": "icons/icon-192x192-A.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ],
+      "launch_type": "single-client"
+    }
+  ],
   "scope_extensions": [],
   "edge_side_panel": {
     "preferred_width": 400
   },
+  "widgets": [
+    {
+      "name": "HematYuk Saldo",
+      "description": "Widget ringkasan saldo dan transaksi terkini HematYuk",
+      "tag": "hematyuk-balance-widget",
+      "ms_ac_template": "widgets/balance-card.json",
+      "data": "widgets/balance-data.json",
+      "type": "application/json",
+      "screenshots": [
+        {
+          "src": "icons/screenshot1.png",
+          "sizes": "1442x3090",
+          "label": "HematYuk balance widget"
+        }
+      ],
+      "icons": [
+        {
+          "src": "icons/icon-192x192-A.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ],
+      "auth": false,
+      "update": 3600
+    }
+  ],
   "icons": [
     {
       "src": "icons/icon-192x192-A.png",
@@ -79,6 +126,32 @@
           "sizes": "192x192",
           "type": "image/png",
           "purpose": "maskable any"
+        }
+      ]
+    },
+    {
+      "name": "Tambah Transaksi",
+      "short_name": "Transaksi",
+      "url": "./index.html?page=keuangan",
+      "description": "Catat transaksi keuangan baru",
+      "icons": [
+        {
+          "src": "icons/icon-192x192-A.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Kelola Produk",
+      "short_name": "Produk",
+      "url": "./index.html?page=produk",
+      "description": "Kelola inventaris produk",
+      "icons": [
+        {
+          "src": "icons/icon-192x192-A.png",
+          "sizes": "192x192",
+          "type": "image/png"
         }
       ]
     }
