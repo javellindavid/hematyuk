@@ -2009,12 +2009,70 @@
       await loadAllData();
       renderStrategies();
 
-      // Service Worker
+      // ── Service Worker & PWA Features ──────────────────────
       if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('./service-worker.js')
-          .then(() => console.log('SW registered'))
-          .catch(e => console.log('SW error', e));
+        const swReg = await navigator.serviceWorker.register('./service-worker.js');
+        console.log('[App] SW registered:', swReg.scope);
+
+        // ── Push Notifications ──────────────────────────────
+        if ('PushManager' in window && 'Notification' in window) {
+          // Request permission after user interaction (auto-ask on load if not decided)
+          if (Notification.permission === 'default') {
+            Notification.requestPermission().then(permission => {
+              console.log('[App] Notification permission:', permission);
+            });
+          }
+          // Subscribe to push (uses SW registration)
+          swReg.pushManager.getSubscription().then(sub => {
+            if (!sub) {
+              console.log('[App] No push subscription yet - ready for push');
+            } else {
+              console.log('[App] Existing push subscription found');
+            }
+          });
+        }
+
+        // ── Periodic Background Sync ────────────────────────
+        if ('periodicSync' in swReg) {
+          try {
+            await swReg.periodicSync.register('hematyuk-periodic-update', {
+              minInterval: 24 * 60 * 60 * 1000 // once per day
+            });
+            console.log('[App] Periodic sync registered');
+          } catch (e) {
+            console.log('[App] Periodic sync not supported:', e.message);
+          }
+        }
+
+        // ── Background Sync ─────────────────────────────────
+        if ('sync' in swReg) {
+          swReg.sync.register('sync-hematyuk-data').catch(e => {
+            console.log('[App] Background sync register failed:', e);
+          });
+        }
+
+        // ── Listen for SW messages ──────────────────────────
+        navigator.serviceWorker.addEventListener('message', event => {
+          if (event.data?.type === 'SYNC_COMPLETE') {
+            console.log('[App] Sync complete:', event.data.tag);
+          }
+          if (event.data?.type === 'PERIODIC_UPDATE') {
+            console.log('[App] Periodic update received');
+            loadAllData(); // Refresh data
+          }
+        });
       }
+
+      // ── Offline / Online Detection ──────────────────────────
+      function updateOnlineStatus() {
+        if (!navigator.onLine) {
+          showToast('📶 Anda sedang offline. Data tetap tersedia.');
+        } else {
+          console.log('[App] Back online');
+        }
+      }
+      window.addEventListener('offline', updateOnlineStatus);
+      window.addEventListener('online', () => showToast('✅ Kembali online!'));
     }
 
     init();
