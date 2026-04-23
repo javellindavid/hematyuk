@@ -6,12 +6,22 @@
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
-  "display_override": ["tabbed", "window-controls-overlay", "standalone", "minimal-ui", "browser"],
+  "display_override": [
+    "tabbed",
+    "window-controls-overlay",
+    "standalone",
+    "minimal-ui",
+    "browser"
+  ],
   "tab_strip": {
     "home_tab": {
       "scope_patterns": [
-        { "pathname": "/HematYuk/" },
-        { "pathname": "/HematYuk/index.html" }
+        {
+          "pathname": "/HematYuk/"
+        },
+        {
+          "pathname": "/HematYuk/index.html"
+        }
       ]
     },
     "new_tab_button": {
@@ -58,8 +68,13 @@
     {
       "action": "./index.html",
       "accept": {
-        "application/json": [".json"],
-        "text/plain": [".txt", ".csv"]
+        "application/json": [
+          ".json"
+        ],
+        "text/plain": [
+          ".txt",
+          ".csv"
+        ]
       },
       "icons": [
         {
@@ -72,7 +87,9 @@
     }
   ],
   "scope_extensions": [
-    { "origin": "https://javellindavid.github.io" }
+    {
+      "origin": "https://javellindavid.github.io"
+    }
   ],
   "edge_side_panel": {
     "preferred_width": 400
@@ -112,18 +129,18 @@
   "screenshots": [
     {
       "src": "icons/screenshot1.png",
-      "sizes": "575x1280",
+      "sizes": "1080x1920",
       "type": "image/png",
       "form_factor": "narrow"
     },
     {
       "src": "icons/screenshot2.png",
-      "sizes": "575x1280",
+      "sizes": "1080x1920",
       "type": "image/png",
       "form_factor": "narrow"
     },
     {
-      "src": "icons/screenshot7.png",
+      "src": "icons/screenshot3.png",
       "sizes": "1920x1080",
       "type": "image/png",
       "form_factor": "wide"
